@@ -3,6 +3,7 @@
   "_comment3": "NAME=windows-server-2016-standard-x64-eval    WINDOWS_VERSION=2016 VIRTIO_WIN_ISO_DIR=./packer_cache/virtio-win ISO_URL=https://software-download.microsoft.com/download/pr/Windows_Server_2016_Datacenter_EVAL_en-us_14393_refresh.ISO                                                                               PACKER_IMAGES_OUTPUT_DIR=/var/tmp/ TMPDIR=/var/tmp/ LOG_DIR=/tmp/ packer build -only=qemu windows.json",
   "_comment4": "NAME=windows-server-2019-standard-x64-eval    WINDOWS_VERSION=2019 VIRTIO_WIN_ISO_DIR=./packer_cache/virtio-win ISO_URL=https://software-static.download.prss.microsoft.com/dbazure/988969d5-f34g-4e03-ac9d-1f9786c66749/17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso                  PACKER_IMAGES_OUTPUT_DIR=/var/tmp/ TMPDIR=/var/tmp/ LOG_DIR=/tmp/ packer build -only=qemu windows.json",
   "_comment5": "NAME=windows-server-2022-standard-x64-eval    WINDOWS_VERSION=2022 VIRTIO_WIN_ISO_DIR=./packer_cache/virtio-win ISO_URL=https://software-static.download.prss.microsoft.com/sg/download/888969d5-f34g-4e03-ac9d-1f9786c66749/SERVER_EVAL_x64FRE_en-us.iso                                                             PACKER_IMAGES_OUTPUT_DIR=/var/tmp/ TMPDIR=/var/tmp/ LOG_DIR=/tmp/ packer build -only=qemu windows.json",
+  "_comment_mods": "BleachBit and Ultradefrag have been removed",
   "builders": [
     {
       "accelerator": "{{ user `accelerator` }}",
@@ -152,18 +153,6 @@
       ],
       "use_proxy": false,
       "playbook_file": "ansible/win-simple.yml"
-    },
-    {
-      "inline": [
-        "%HOMEDRIVE%\\BleachBit-Portable\\bleachbit_console.exe --clean deepscan.backup deepscan.ds_store deepscan.thumbs_db deepscan.tmp internet_explorer.cache internet_explorer.cookies internet_explorer.downloads internet_explorer.forms internet_explorer.history internet_explorer.logs system.clipboard system.custom system.logs system.memory_dump system.muicache system.prefetch system.recycle_bin system.tmp system.updates windows_defender.backup windows_defender.history windows_defender.logs windows_defender.quarantine windows_defender.temp windows_explorer.mru windows_explorer.recent_documents windows_explorer.run windows_explorer.search_history windows_explorer.shellbags windows_explorer.thumbnails  > NUL",
-        "%HOMEDRIVE%\\ultradefrag-portable-7.1.4.amd64\\udefrag.exe --optimize --repeat --suppress-progress-indicator %SystemDrive%",
-        "rmdir /s /q %HOMEDRIVE%\\ultradefrag-portable-7.1.4.amd64",
-        "%HOMEDRIVE%\\BleachBit-Portable\\bleachbit_console.exe --clean system.free_disk_space",
-        "rmdir /s /q %HOMEDRIVE%\\BleachBit-Portable"
-      ],
-      "pause_before": "5m",
-      "remote_path": "C:\\script.bat",
-      "type": "windows-shell"
     }
   ],
   "variables": {
