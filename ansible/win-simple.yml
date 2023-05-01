@@ -1,6 +1,8 @@
 ---
 - hosts: all
 
+# BleachBit & Ultradefrag have been removed from Windows Images in this Fork
+
   vars:
     # renovate: datasource=github-tags depName=bleachbit/bleachbit
     bleachbit_version: 4.4.2
