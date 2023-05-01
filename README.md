@@ -9,6 +9,12 @@
 
 ---
 
+# This Fork
+
+This fork is for my personal use. In keeping with the Apache License of the original I'll try to enumerate changes here:
+- Remove BleachBit from Windows image
+- Remove UltraDefrag from Windows image
+
 ### GitHub repository for bug reports or feature requests
 
 * [https://github.com/ruzickap/packer-templates/](https://github.com/ruzickap/packer-templates/issues)
